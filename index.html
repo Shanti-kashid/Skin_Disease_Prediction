@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Skin Disease Prediction</title>
+
+<style>
+
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#667eea,#764ba2);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:15px;
+width:420px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+margin-bottom:20px;
+}
+
+.upload{
+border:2px dashed #ccc;
+padding:25px;
+border-radius:10px;
+margin-bottom:20px;
+}
+
+button{
+background:#667eea;
+color:white;
+border:none;
+padding:12px 30px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#5a67d8;
+}
+
+.result{
+margin-top:20px;
+background:#f3f3f3;
+padding:15px;
+border-radius:8px;
+font-weight:bold;
+}
+
+img{
+margin-top:15px;
+max-width:220px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Skin Disease Prediction</h1>
+
+<form action="/predict" method="post" enctype="multipart/form-data">
+
+<div class="upload">
+
+<p>Select Skin Image</p>
+<input type="file" name="file" required>
+
+</div>
+
+<button type="submit">Predict Disease</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result">
+
+Prediction: {{ prediction }}
+
+</div>
+
+<img src="{{ img_path }}">
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
